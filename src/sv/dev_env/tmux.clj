@@ -20,7 +20,7 @@
               n)))
 
 (defn execute!
-  [n cmd]
+  [cmd]
   (shell (str "tmux send-keys -t dev '"
               cmd "' enter")))
 
@@ -28,8 +28,7 @@
   [{:keys [name n cmd]}]
   (new-window! n name)
   (select-window! n)
-  (execute! n cmd))
-
+  (execute! cmd))
 
 (defn start-all!
   [tasks]
