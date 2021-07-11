@@ -40,3 +40,16 @@
 (defn attach-session!
   [shell]
   (shell "tmux -2 attach-session -t dev"))
+
+(defn tmux!
+  [shell {:keys [tasks]}]
+  (new-session! shell)
+
+  (start-all! shell
+              tasks)
+
+  (select-window! shell
+                  1)
+
+  (attach-session! shell)
+  )
