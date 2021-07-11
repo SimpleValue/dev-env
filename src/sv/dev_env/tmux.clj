@@ -4,7 +4,7 @@
 (defn- shell
   [cmd]
   @(process/process
-    [cmd]
+    ["bash" "-c" cmd]
     {:out :inherit
      :err :inherit}))
 
