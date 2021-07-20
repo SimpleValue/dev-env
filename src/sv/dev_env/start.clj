@@ -2,7 +2,7 @@
   (:require [clojure.java.io :as io]))
 
 (defn start
-  [{:keys [image ports env-vars cmd container-name]}]
+  [{:keys [image ports env-vars cmd container-name extra-opts]}]
   (concat
    ["docker" "run"
     "-it"
@@ -27,6 +27,7 @@
     (fn [[k v]]
       ["-e" (str k "=" v)])
     env-vars)
+   extra-opts
    [image]
    (or cmd
        ["bb" "dev-tmux"])))
